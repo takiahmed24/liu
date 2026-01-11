@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Milestone College – Business Studies Exam Routine</title>
+
+  <style>
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #f4f6f8;
+      margin: 0;
+      padding: 0;
+      color: #111827;
+    }
+
+    header {
+      background: #1e40af;
+      color: white;
+      padding: 20px 15px;
+      text-align: center;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 22px;
+    }
+
+    header p {
+      margin: 6px 0 0;
+      font-size: 14px;
+    }
+
+    .container {
+      max-width: 900px;
+      margin: 25px auto;
+      padding: 15px;
+    }
+
+    .info {
+      background: white;
+      padding: 15px;
+      border-radius: 8px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      font-size: 14px;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      background: white;
+      border-radius: 8px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 10px;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    th {
+      background: #1e40af;
+      color: white;
+    }
+
+    tr:nth-child(even) {
+      background: #f9fafb;
+    }
+
+    .countdown {
+      font-weight: bold;
+      color: #1e40af;
+      font-size: 13px;
+      margin-top: 4px;
+    }
+
+    .completed {
+      color: #10b981;
+      font-weight: bold;
+    }
+
+    footer {
+      text-align: center;
+      padding: 15px;
+      font-size: 13px;
+      color: #6b7280;
+    }
+
+    @media (max-width: 600px) {
+      th, td {
+        font-size: 12px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+<header>
+  <h1>Milestone College</h1>
+  <p>1st Term Exam – 2026 (Class XI | Business Studies)</p>
+</header>
+
+<div class="container">
+
+  <div class="info">
+    <strong>Group:</strong> Business Studies<br>
+    <strong>Starting Time:</strong> 11:00 AM<br>
+    <strong>Date of Issue:</strong> 07 January 2026
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th>S/N</th>
+        <th>Date</th>
+        <th>Day</th>
+        <th>Subject</th>
+        <th>Countdown</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <tr data-date="2026-01-11T11:00:00">
+        <td>01</td>
+        <td>11/01/26</td>
+        <td>Sunday</td>
+        <td>Finance & Banking</td>
+        <td class="countdown"></td>
+      </tr>
+
+      <tr data-date="2026-01-13T11:00:00">
+        <td>02</td>
+        <td>13/01/26</td>
+        <td>Tuesday</td>
+        <td>ICT</td>
+        <td class="countdown"></td>
+      </tr>
+
+      <tr data-date="2026-01-19T11:00:00">
+        <td>03</td>
+        <td>19/01/26</td>
+        <td>Monday</td>
+        <td>B. Organization & Management</td>
+        <td class="countdown"></td>
+      </tr>
+
+      <tr data-date="2026-01-21T11:00:00">
+        <td>04</td>
+        <td>21/01/26</td>
+        <td>Wednesday</td>
+        <td>Bangla</td>
+        <td class="countdown"></td>
+      </tr>
+
+      <tr data-date="2026-01-22T11:00:00">
+        <td>05</td>
+        <td>22/01/26</td>
+        <td>Thursday</td>
+        <td>Agriculture Studies</td>
+        <td class="countdown"></td>
+      </tr>
+
+      <tr data-date="2026-01-25T11:00:00">
+        <td>06</td>
+        <td>25/01/26</td>
+        <td>Sunday</td>
+        <td>English</td>
+        <td class="countdown"></td>
+      </tr>
+
+      <tr data-date="2026-01-27T11:00:00">
+        <td>07</td>
+        <td>27/01/26</td>
+        <td>Tuesday</td>
+        <td>Accounting</td>
+        <td class="countdown"></td>
+      </tr>
+
+    </tbody>
+  </table>
+
+</div>
+
+<footer>
+  © 2026 Milestone College – Business Studies
+</footer>
+
+<script>
+  function updateCountdowns() {
+    const now = new Date();
+
+    document.querySelectorAll('tr[data-date]').forEach(row => {
+      const examDate = new Date(row.dataset.date);
+      const diff = examDate - now;
+      const cell = row.querySelector('.countdown');
+
+      if (diff <= 0) {
+        cell.textContent = 'Completed';
+        cell.className = 'countdown completed';
+        return;
+      }
+
+      const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+      const h = Math.floor((diff / (1000 * 60 * 60)) % 24);
+      const m = Math.floor((diff / (1000 * 60)) % 60);
+      const s = Math.floor((diff / 1000) % 60);
+
+      cell.textContent = `${d}d ${h}h ${m}m ${s}s left`;
+    });
+  }
+
+  updateCountdowns();
+  setInterval(updateCountdowns, 1000);
+</script>
+
+</body>
+</html>
